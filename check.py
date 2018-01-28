@@ -34,24 +34,36 @@ def check_person_info(num):
     _entering_year = str(num[4:6])
     _personal_number = str(num[6:10])
 
-    _college_list = {12:"経済学部", 13:"経営学部", 14:"産業社会学部", 15:"国際関係学部", 17:"文学部", 18:"政策科学部", 21:"理工学部", 22:"理工学部", 26:"情報理工学部"}
-    _major_field_list = {00:"なし"}
+    _colleges_list = {11:"法学部",
+                    12:"経済学部",
+                    13:"経営学部",
+                    14:"産業社会学部",
+                    15:"国際関係学部",
+                    17:"文学部",
+                    18:"政策科学部",
+                    19:"映像学部",
+                    20:"総合心理学部",
+                    21:"理工学部",
+                    22:"理工学部",
+                    25:"食マネジメント学部",
+                    26:"情報理工学部",
+                    27:"生命科学部",
+                    28:"薬学部",
+                    29:"スポーツ健康科学部"
+                    }
+    _major_fields_list = {}
 
-    if (_college in _college_list.keys()):
-      _college = _college_list[_college]
-    else:
-      _college = "不明"
-    if (_major_field in _major_field_list.keys()):
-      _major_field = _major_field_list[_major_field]
-    else:
-      _major_field = "不明"
+    # 学部
+    _college = _colleges_list.get(_college, 'None')
+    # 課程・専攻など
+    _major_field = _major_fields_list.get(_major_field, 'None')
 
     print("学部・研究科: {0}".format(_college))
     print("課程・専攻など: {0}".format(_major_field))
     print("入学年度: 20{0}".format(_entering_year))
     print("個人番号: {0}".format(_personal_number))
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
   stnumber = str(input("学生証番号を入力してください(ハイフンなし): "))
   if ((len(stnumber)) == 11) and (stnumber.isdigit()):
     verify_stnumber(stnumber)
